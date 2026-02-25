@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd C:/Users/isaac/repos/games/main && npm create next-app@latest . --yes --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" 2>&1)",
+      "Bash(cd C:/Users/isaac/repos/games/main && npx create-next-app@latest . --yes --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --force 2>&1)",
+      "Bash(cd C:/Users/isaac/repos/games/main && pnpm install 2>&1)",
+      "Bash(which npm node && node --version && npm --version 2>&1)",
+      "Bash(npm install:*)",
+      "Bash(cd C:/Users/isaac/repos/games/main && /c/Users/isaac/AppData/Roaming/npm/pnpm install 2>&1)",
+      "Bash(cd C:/Users/isaac/repos/games/main && /c/Users/isaac/AppData/Roaming/npm/pnpm add next@latest 2>&1)",
+      "Bash(cd C:/Users/isaac/repos/games/main && /c/Users/isaac/AppData/Roaming/npm/pnpm add -D eslint-config-next@latest 2>&1)",
+      "Bash(cd C:/Users/isaac/repos/games/main && /c/Users/isaac/AppData/Roaming/npm/pnpm build 2>&1)"
+    ]
+  }
+}

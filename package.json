@@ -1,0 +1,37 @@
+{
+  "name": "games",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "sync-assets": "tsx scripts/sync-r2.ts"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^8.52.1",
+    "@babylonjs/loaders": "^8.52.1",
+    "next": "16.1.6",
+    "phaser": "^3.90.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-s3": "^3.726.1",
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.0.1",
+    "dotenv": "^16.4.7",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "mime-types": "^2.1.35",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5"
+  }
+}
