@@ -8,14 +8,14 @@
  *   pnpm sync-assets
  *
  * Required env vars (add to .env.local):
- *   R2_ACCOUNT_ID     - Cloudflare account ID
- *   R2_ACCESS_KEY_ID  - R2 access key ID
+ *   R2_ENDPOINT          - jurisdiction-specific endpoint URL
+ *   R2_ACCESS_KEY_ID     - R2 access key ID
  *   R2_SECRET_ACCESS_KEY - R2 secret access key
- *   R2_BUCKET_NAME    - bucket name (e.g. "games-assets")
+ *   R2_BUCKET_NAME       - bucket name
  */
 
-import { S3Client, PutObjectCommand, ListObjectsV2Command } from "@aws-sdk/client-s3";
-import { readdir, readFile, stat } from "fs/promises";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { readdir, readFile } from "fs/promises";
 import { join, relative } from "path";
 import { lookup as mimeLookup } from "mime-types";
 
@@ -24,20 +24,20 @@ import { config } from "dotenv";
 config({ path: ".env.local" });
 
 const {
-  R2_ACCOUNT_ID,
+  R2_ENDPOINT,
   R2_ACCESS_KEY_ID,
   R2_SECRET_ACCESS_KEY,
   R2_BUCKET_NAME,
 } = process.env;
 
-if (!R2_ACCOUNT_ID || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY || !R2_BUCKET_NAME) {
-  console.error("Missing R2 env vars. Check .env.local — need R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME");
+if (!R2_ENDPOINT || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY || !R2_BUCKET_NAME) {
+  console.error("Missing R2 env vars. Check .env.local — need R2_ENDPOINT, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME");
   process.exit(1);
 }
 
 const client = new S3Client({
   region: "auto",
-  endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  endpoint: R2_ENDPOINT,
   credentials: {
     accessKeyId: R2_ACCESS_KEY_ID,
     secretAccessKey: R2_SECRET_ACCESS_KEY,
